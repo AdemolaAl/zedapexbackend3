@@ -1,0 +1,128 @@
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "poppins";
+    color: white;
+    background-color: #0F172A;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 8px 25px;
+    font-size: 15px;
+    background-color: #6366f1;
+    border-radius: 5px;
+    font-family: "poppins";
+    border: none;
+    outline: none;
+    color: white;
+
+}
+
+div {
+    padding: 0;
+    margin: 0;
+}
+
+
+.input-main {
+    max-width: 100%;
+    margin: 30px 0;
+    p {
+        margin: 5px 0;
+    }
+
+    input,  textarea {
+        padding: 8px; /* Padding applied to top and bottom */
+        padding-left: 10px; /* Additional padding to the left */
+        padding-right: 10px; /* Additional padding to the right */
+        width: calc(100% - 20px); /* Subtracting the total additional padding from the width */
+        max-width: 100%;
+        border: 1px solid #0F172A;
+        border-radius: 5px;
+        outline: none;
+        font-family: "poppins";
+        background-color: #0F172A;
+    }
+
+}
+
+.input-main input:focus,
+.input-main textarea:focus , select:focus{
+    outline:2px solid #4F46E5; /* Change the outline color when focused */
+}
+
+
+form{
+    border-radius: 10px;
+    margin: 100px 0;
+    width: 30%;
+    padding: 30px;
+    background-color: #1E293B;
+
+    .header1{margin-bottom: 5px;}
+    .cvr1{
+        margin: 20px 0;
+    }
+
+    
+    select {
+        color: white;
+        padding: 8px;
+        font-family: "poppins";
+        font-size: 16px;
+        border: 1px solid #0F172A;
+        border-radius: 5px;
+        appearance: none; /* Remove default appearance */
+        -webkit-appearance: none; /* Remove default appearance for Safari */
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>'); /* Add custom arrow icon */
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 20px 20px;
+        cursor: pointer;
+        background-color: #0F172A;
+        width: 100%;
+        outline-color:#4F46E5 ;
+    }
+
+    /* Style the options */
+    select option {
+        padding: 8px;
+        font-size: 16px;
+        font-family: "poppins";
+        
+    }
+
+    .sign{
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0 0 40px 0;
+    }
+    .already{
+        display: flex;
+        font-size: 15px;
+        .signin{
+            margin-left: 10px;
+            color: #6366f1;
+        }
+    }
+}
+
+footer{
+    border-top: 0.5px solid #1E293B;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 50px;
+    margin: 50px 0 30px 0;
+    color: #64748B;
+    .cvr{
+        width: 400px;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+    } 
+}

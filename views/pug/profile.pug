@@ -1,0 +1,242 @@
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Profile
+    llink(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', rel='stylesheet')
+    link(rel='stylesheet', href='/public/profile.css')
+    script(src='https://kit.fontawesome.com/0b68ed503d.js', crossorigin='anonymous')
+  body
+    .body
+      if flash.success
+        .popup-cvr
+          .popup
+            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+            p #{flash.success}
+      else if flash.error
+        .popup-cvr
+          .popup(style='background-color:red')
+            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+            p #{flash.error}
+
+      .first
+        div(style='display:flex; align-items:center;')
+          img(src="pictures/zedapex_logo_black-removebg-preview.png" style="height:30px;")
+          .name ZedapexAcademy
+        .divs
+          .div(onclick='handlemycourses(this)')
+            <i class="fa-regular fa-user"></i> 
+            p My Dashboard
+          .div(onclick='handlecourses(this)')
+            <i class="fa-regular fa-user"></i> 
+            p Courses         
+          .div(onclick='handleprofile(this)')
+            <i class="fa-regular fa-user"></i> 
+            p Profile
+          .div(onclick='handlebilling(this)') 
+            <i class="fa-solid fa-money-bill"></i>
+            p Billing
+          .div(onclick='handleorder(this)') 
+           <i class="fa-solid fa-clock-rotate-left"></i>
+           p Order History
+        .image-cvr
+          if user.fileId 
+            .image(style=`background: url('/images/${user.shortId}'); background-position: center; background-size: cover;`)
+          else 
+            .image
+          p.header1 #{user.username}
+          
+      .mobile-header
+        .header-cvr
+          a(href="/") 
+            .name Revolution
+          .cvr1 
+            a(href="/profile") 
+              i.fa-regular.fa-user.fa-lg(style='margin-right: 20px;')
+            a(href="/shoppingcart")   
+              i.fa-solid.fa-bag-shopping.fa-xl(style='margin-right: 20px;')
+            i.fa-solid.fa-bars.fa-xl(onclick='slidein()')
+
+      .slidein
+        <i class="fa-solid fa-xmark fa-xl" onclick='slideout()'></i>
+        .slideincvr
+          .div(onclick='handleprofile(this)') Profile
+          .div(onclick='handlebilling(this)') Billing
+          .div(onclick='handleorder(this)') Order History   
+
+      .second
+        .header3
+          img(src="pictures/zedapex_logo_black-removebg-preview.png" style="height:30px;")
+          .flex
+            p(style='margin :0 15px') Courses
+            p(style='margin :0 15px') Progress
+          .flex  
+            button Start Learning
+            div(style="display:flex; align-items:center;") 
+              p(style='margin :0 10px') #{user.username}
+              <i class="fa-regular fa-user"></i>
+
+        #profile.second-display
+          .cvr(style='border-top: unset; padding-top:30px')
+            .first1
+              .header1 Personal Information
+              .text Use a permanent address where you can receive mail.
+              
+
+            .second2
+              form(action="/profileupdate", method="post", enctype="multipart/form-data")
+                .top-cvr(style='display: flex; align-items: center;')
+                  if user.fileId 
+                    .top(style=`background: url('/images/${user.shortId}'); background-position: center; background-size: cover;`)
+                  else
+                    .top
+                  label.file-label(for='file-input')
+                    | Upload a Picture
+                    input(type='file' id='file-input' name='picture' onchange='displayFileName()')
+                    span#file-name
+      
+                .input-main
+                  p Email address
+                  input(type='text', name='email' value=user.email)
+                .input-main
+                  p Username
+                  input(type='text', name='username', value=user.username)
+                input.button(type="submit", value="Save")
+          .cvr
+            .first1
+              .header1 Change password
+              .text Update your password associated with your account.
+            .second2
+              form(action="/passwordupdate", method="post") 
+                .input-main
+                  p Current Password
+                  input(type='text', name='currentpassword')
+                .input-main
+                  p New Password
+                  input(type='text', name='newpassword')
+                .input-main
+                  p Confirm Password
+                  input(type='text', name='')
+                button Save
+
+          .cvr(style='align-items: center;')
+            .first1
+              .header1 Logout
+              .text Logout from your current account
+            .second2
+              a(href="/logout") 
+                button(style='font-size: 18px;') Logout
+
+          .cvr
+            .first1
+              .header1 Delete account
+              .text
+                | No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.
+            .second2
+              form(action="/deleteaccount", method="post") 
+                button(style='font-size: 18px; background-color: #EF4444; margin-top: 20px;') Yes, delete my account
+
+        #billing.second-display
+          .cvr(style='border-top: unset;  padding-top:30px')
+            .first1
+              .header1 Update Billing Address
+              .text Update the billing address associated with your account.
+            .second2
+              .input-main
+                p Card number
+                input(type='text')
+              .input-main
+                p Name on card
+                input(type='text')
+              .two-input
+                .input-main(style='width: 73%;')
+                  p Expiration date (MM/YY)
+                  input(type='text')
+                .input-main(style='width: 23%;')
+                  p CVC
+                  input(type='text')
+              button Save
+        #order.second-display
+          .order-cvr
+            ul Order no.
+            ul Product
+            ul Date
+            ul Status
+            ul Current Value
+          .products
+            .product
+              ul ORD007474
+              ul YAPPI - Animation and Post-Production
+              ul 07/18/2023
+              ul Complete
+              ul $0.00 USD
+            .product
+              ul ORD007474
+              ul YAPPI - Animation and Post-Production
+              ul 07/18/2023
+              ul Complete
+              ul $0.00 USD
+
+        #courses.second-display 
+         .courses 
+            .cvr 
+              each item in HomePageCoursesSliced
+                a(href=`/coursepage/${item.shortId}`, style='text-decoration:none; color:unset;') 
+                  .course 
+                    .a 
+                      iframe(width="100%" height="100%" src=`https://www.youtube.com/embed/${myfunction(item.video)}` title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen) 
+                    .b
+                      .name #{item.name}
+                      .author #{item.author}
+                      .total Total Lesson : 20
+                      .price #{item.price}
+          
+
+        #mycourses.second-display 
+         p Hello #{user.username}
+         .top-cvr
+          .div4  
+            .p2 #{user.enrolledCourses.length} 
+            .p1 Enrolled Courses
+          .div4 
+            .p2 0
+            .p1 Completed Courses
+          .div4  
+            .p2 0
+            .p1 Running Courses
+
+        #coursespage.second-display 
+          .div
+            .div1 
+              .p1 Course Details
+              .p2 Forex 101
+              .p3 A comprehensive course that teaches you everything you need to know about marketing and Digital skills so you can upscale your business. Take your time to go through the course and ensure you complete it before selling.
+
+              .learn
+                .p2(style='font-size:17px') What You would learn 
+                .div 
+                  .p3 learn 1  
+                  .p3 learn 1  
+                  .p3 learn 1  
+                  .p3 learn 1
+              .p1(style='margin:50px 0 20px 0') Corse Content  
+              .learn1
+                .left Lesson 1
+                .right Money and Mindset, Affiliate Marketing Fundamentals, and Money Needle  
+            .div2 
+              iframe(width='100%', height='200px', src='https://www.youtube.com/embed/le-m9F8oaUI?si=aRhhLNJ3moZyob-H', title='YouTube video player', frameborder='0', allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share', allowfullscreen='', style='margin: 0px 0;')
+              .learn 
+                .div1(style='display:flex; justify-content: space-between; width:100%')
+                  .p2 $100
+                  .p1 Total Lesson:20
+                button(style='width:100%; margin:20px 0; padding:15px;') Buy Now
+                p2 This couse includes
+                ul 
+                  li Forex from beginner to advance
+                  li Course Material
+
+
+
+    script(src='/public/profile.js')

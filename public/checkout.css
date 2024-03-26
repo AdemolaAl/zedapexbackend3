@@ -1,0 +1,154 @@
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "poppins";
+  color: white;
+  background-color: #0F172A;
+}
+
+button {
+  padding: 8px 25px;
+  font-size: 15px;
+  background-color: #6366f1;
+  border-radius: 5px;
+  font-family: "poppins";
+  border: none;
+  outline: none;
+  color: white;
+}
+
+div, p {
+  padding: 0;
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex3 {
+  display: flex;
+  align-items: center;
+}
+
+.flex2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+header {
+  padding: 10px;
+  background-color: #1E293B;
+}
+header .cvr {
+  margin: 10px;
+  display: flex;
+  color: white;
+  align-items: center;
+  position: relative;
+}
+header button {
+  position: absolute;
+  right: 5%;
+  padding: 8px 30px;
+}
+header .img {
+  right: 10px;
+  position: absolute;
+  border-radius: 40px;
+  height: 40px;
+  background-color: rgb(107, 73, 103);
+  width: 40px;
+}
+header .name {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+}
+
+.comp {
+  font-size: 33px;
+  margin-top: 80px;
+  margin-left: 130px;
+}
+
+.main {
+  margin: 80px 130px;
+}
+.main .choose {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+.main .cvr1 {
+  color: white;
+  padding: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 500px;
+}
+.main .selected {
+  transition: background-color 0.3s ease;
+  background-color: #6366f1; /* Change background color to #6366f1 */
+  color: #fff; /* Change text color to white for better visibility */
+}
+.main .circle {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  margin-right: 10px;
+  border: 2px solid orange;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+.main .selected .left .circle {
+  background-color: white;
+}
+.main .div2 {
+  padding: 20px;
+  background-color: white;
+  color: #1E293B;
+  width: 400px;
+  border-radius: 5px;
+}
+.main .div2 .center {
+  background-color: #0F172A;
+  color: white;
+  margin: 20px 0 30px 0;
+  padding: 20px;
+  border-radius: 5px;
+}
+.main .div2 .center .paymth {
+  margin: 40px 0 0 0;
+}
+.main .div2 .center .paycvr {
+  margin-bottom: 30px;
+}
+.main .div2 .center .payment {
+  font-size: 14px;
+}
+
+footer {
+  border-top: 0.5px solid #1E293B;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-top: 50px;
+  margin: 50px 0 30px 0;
+  color: #64748B;
+}
+footer .cvr {
+  width: 400px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}/*# sourceMappingURL=checkout.css.map */

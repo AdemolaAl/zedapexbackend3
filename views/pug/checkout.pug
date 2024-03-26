@@ -1,0 +1,84 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Document
+    link(rel='stylesheet', href='/public/checkout.css')
+    script(src='https://kit.fontawesome.com/0b68ed503d.js', crossorigin='anonymous')
+    link(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', rel='stylesheet')
+    script(src="public/checkout.js") 
+  
+  body
+    header
+      .cvr
+        .name ZedapexAcademy
+        button
+          a(href='/enroll.html') Enroll
+        .img
+    .comp You&apos;re almost there! completet your order
+    .main.flex2
+      
+      .div1
+        .choose Choose billing cycle
+        .cvr1(onclick='changeColor(this)')
+          .left.flex3
+            .circle
+            .cover
+              p 1 month
+              p(style='font-size: 13px;') Renews at N2500.00 on 24/04/2024
+          .right N30000
+
+        .cvr1(onclick='changeColor(this)')
+          .left.flex3
+            .circle
+            .cover
+              p 6 month
+              p(style='font-size: 13px;') Renews at N2500.00 on 24/04/2024
+          .right N180000
+          
+        .cvr1(onclick='changeColor(this)')
+          .left.flex3
+            .circle
+            .cover
+              p Yearly
+              p(style='font-size: 13px;') Renews at N2500.00 on 24/04/2024
+          .right N250000
+      
+      
+      .div2
+        p(style='font-size: 22px;') Payment Information
+        .center
+          p(style='margin-bottom:10px;') Web hosting soldier
+          .flex2
+            p 1 month
+            p#price 
+          .paycvr
+            p.paymth Payment method
+            p.payment Flutter wave
+            p.payment Paypal
+          .flex2
+            p Total
+            p#price1
+          button(style='width: 100%; margin-top: 20px;') Pay now
+        p(style='font-size: 12px;')
+          | By checking out you agree with our Terms Of Service . We will process your personal data for the fulfillment of your order and other purposes as per our Privacy Policy . You can cancel recurring payments at any time.
+
+
+          
+    footer 
+      .container 
+        .cvr 
+          a(href="http://", target="_blank", rel="noopener noreferrer") About
+          a(href="http://", target="_blank", rel="noopener noreferrer") Terms &amp; Condition
+          a(href="http://", target="_blank", rel="noopener noreferrer") Get Support
+        .socials 
+        span
+          | &copy; 
+          span#copyright
+            script.
+              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+          |  Geeks-UI, Inc. All Rights Reserved
+
