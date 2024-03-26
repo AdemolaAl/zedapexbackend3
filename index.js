@@ -5,6 +5,7 @@ const route = require('./route.js');
 const PORT = 3000;
 const session = require('express-session');
 const flash = require('express-flash');
+const MongoDBStore = require('connect-mongodb-session')(session);
 const passport = require('passport');
 const myDB = require('./connection');
 const http = require('http').createServer(app);
@@ -17,11 +18,20 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+const store = new MongoDBStore({
+    uri:  process.env.MONGO_URI,
+    collection: 'sessions',
+});
+store.on('error', function(error) {
+    console.error('MongoDB session store error:', error);
+});
+
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: store,
 }))
 
 app.use(flash());
