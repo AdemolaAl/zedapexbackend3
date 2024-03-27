@@ -18,21 +18,20 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-const store = new MongoDBStore({
-    uri:  process.env.MONGO_URI,
-    collection: 'sessions',
-});
-store.on('error', function(error) {
-    console.error('MongoDB session store error:', error);
-});
+app.use((req, res, next) => {
+    res.setHeader('Connection', 'keep-alive');
+    next();
+  });
 
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  store: store,
 }))
+
+
+  
 
 app.use(flash());
 app.use(passport.initialize());

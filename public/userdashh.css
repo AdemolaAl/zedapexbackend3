@@ -6,7 +6,6 @@ body {
   color: white;
   background-color: #0F172A;
   display: flex;
-  overflow-y: hidden;
 }
 
 a {
@@ -159,8 +158,9 @@ form .already .signin {
   padding-bottom: 0;
   background-color: #1E293B;
   width: 15%;
-  height: 100vh;
-  position: relative;
+  height: 95vh;
+  position: sticky;
+  top: 0;
 }
 .left .divs {
   margin-top: 50px;
@@ -200,6 +200,7 @@ form .already .signin {
 .right {
   width: 85%;
   height: 86%;
+  overflow: auto;
 }
 .right .flex {
   display: flex;
@@ -216,7 +217,7 @@ form .already .signin {
 }
 .right #content .top {
   padding-bottom: 10px;
-  border-bottom: 1px solid #64748B;
+  border-bottom: 1px solid #2e3d53;
   font-size: 25px;
   font-weight: bold;
 }
@@ -267,10 +268,108 @@ form .already .signin {
   margin-left: 20px;
 }
 .right #content .classesupload {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  padding: 30px;
 }
 .right #content .classesupload button {
   margin-top: 30px;
-}/*# sourceMappingURL=dashboard.css.map */
+}
+.right #content .classesupload .new-class {
+  margin: 30px 0;
+  padding-bottom: 10px;
+  color: #64748B;
+  width: 200px;
+  font-size: 25px;
+  border-bottom: 1px solid #2e3d53;
+}
+.right #content .classesupload .csr2 {
+  height: 300px;
+  width: 340px;
+}
+.right #content .classesupload .csr2 .top {
+  background-color: #6366f1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.right #content .classesupload .csr2 .top .org {
+  font-size: 14px;
+  color: orange;
+}
+.right #content .classesupload .csr2 .top .p2 {
+  font-size: 22px;
+}
+.right #content .classesupload .csr2 .bottom {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #1E293B;
+}
+.right #content .classesupload .csr2 .bottom .cvr {
+  padding: 30px 20px;
+}
+.right #content .classesupload .csr2 .bottom .cvr .p1 {
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+.right #content .classesupload .csr2 .bottom .cvr i {
+  margin-right: 10px;
+}
+.right #content .classesupload .csr2 .bottom .cvr .p2 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.right #content .classesupload .csr2 .bottom .price {
+  border-top: 1px solid rgb(88, 88, 88);
+}
+.right #content .classesupload .csr2 .bottom .price .cvr {
+  padding: 20px 20px;
+}
+.right #content .classesupload .csr2 .bottom .price .cvr .p1 {
+  margin: 0;
+}
+.right #content .classesupload .csr2 .bottom .price .cvr .p2 {
+  font-size: 22px;
+  margin: 0;
+}
+.right #content #profile1 .cvr {
+  padding: 100px 60px;
+  border-bottom: 1px solid #2e3d53;
+  display: flex;
+}
+.right #content #profile1 .cvr .first1 {
+  width: 40%;
+}
+.right #content #profile1 .cvr .second2 {
+  width: 60%;
+  margin-left: 50px;
+  color: #64748B;
+}
+.right #content #profile1 .cvr .second2 form {
+  width: 400px;
+  margin: 0;
+}
+.right #content #profile1 .cvr .second2 form input {
+  color: white;
+}
+.right #content #profile1 .cvr .second2 .top {
+  width: 100px;
+  height: 120px;
+  margin: 20px 20px 20px 0;
+  border-radius: 5px;
+  background-image: url("/pictures/user.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.right #content #profile1 .cvr .second2 .two-input {
+  display: flex;
+  justify-content: space-between;
+}
+.right #content #profile1 .cvr .second2 .two-input .input-main {
+  width: 58%;
+  margin: 15px 0;
+}
+.right #content #profile1 .cvr .second2 .two-input .input-main input {
+  color: white;
+}/*# sourceMappingURL=userdashh.css.map */

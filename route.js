@@ -1,7 +1,6 @@
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const shortId = require('shortid')
-const path = require('path');
 const Memcached = require('memcached');
 const memcached = new Memcached(); // Replace with your Memcached server configuration
 /* code to connect with your memecahced server */
@@ -15,12 +14,14 @@ const multer = require('multer');
 const { GridFSBucket } = require('mongodb');
 const fs = require('fs');
 const { error } = require('console');
+const registration = require('./registration');
 
 
 module.exports = function (app, userDB, DB, productDB
 ) {
   // After connecting to MongoDB
   const bucket = new GridFSBucket(DB);
+  registration(app, userDB, DB, productDB)
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -68,9 +69,6 @@ module.exports = function (app, userDB, DB, productDB
 
   });
 
-  app.get('/coursepage', (req, res) => {
-    res.render('coursepage')
-  })
 
   app.get('/enroll', (req, res) => {
     res.render('enroll')
@@ -81,21 +79,12 @@ module.exports = function (app, userDB, DB, productDB
   app.get('/checkout', (req, res) => {
     res.render('checkout')
   })
+
   app.get('/physical', (req, res) => {
     res.render('physical')
   })
 
-  app.get('/signin', (req, res) => {
-    if (req.isAuthenticated()) {
-      res.redirect('/profile');
-    } else {
-      res.render('signin', { flash: req.flash() });
-    }
-  })
-  app.get('/signup', (req, res) => {
-    res.render('signup')
 
-  })
   app.get('/add', (req, res) => {
     res.render('insert');
   })
@@ -120,47 +109,9 @@ module.exports = function (app, userDB, DB, productDB
   })
 
 
-  app.get('/dashboard/chat2', (req, res) => {
-    let { hello } = req.params;
-    const filePath = path.join(__dirname, 'views', 'html', `chat2.html`);
-
-    fs.readFile(filePath, { encoding: 'utf-8' }, (err, data) => {
-        if (err) {
-            console.error('Error reading the HTML file', err);
-            return res.status(500).send('An error occurred');
-        }
-        // Render your Pug template, passing the HTML content along with other data
-        res.render('dashboard', { flash: req.flash(), content: data, name: hello });
-    });
-});
-  app.get('/dashboard/:hello', (req, res) => {
-    let { hello } = req.params;
-    const filePath = path.join(__dirname, 'views', 'html', `${hello}.html`);
-
-    fs.readFile(filePath, { encoding: 'utf-8' }, (err, data) => {
-        if (err) {
-            console.error('Error reading the HTML file', err);
-            return res.status(500).send('An error occurred');
-        }
-        // Render your Pug template, passing the HTML content along with other data
-        res.render('dashboard', { flash: req.flash(), content: data, name: hello });
-    });
-});
 
 
 
-
-  app.get('/profile', ensureAuthenticated, (req, res) => {
-    productDB.find({}).toArray((err, HomePageCourses) => {
-      if (err) {
-        next(err);
-      } else {
-        const HomePageCoursesSliced = shuffleArray(HomePageCourses).slice(0, 6);
-        res.render('profile', { HomePageCoursesSliced, flash: req.flash(), user: req.user, myfunction: getYouTubeId });
-      }
-    });
-
-  })
 
 
   app.route('/coursepage/:cat').get((req, res) => {
@@ -187,44 +138,7 @@ module.exports = function (app, userDB, DB, productDB
   });
 
 
-  app.post('/signup', async (req, res, next) => {
-    const hash = bcrypt.hashSync(req.body.password, 12);
-    await userDB.insertOne(
-      {
-        username: req.body.username,
-        email: req.body.email,
-        password: hash,
-        enrolledCourses: [],
-        shortId: shortId.generate()
-      },
-      (err, result) => {
-        if (err) {
-          console.log('Error inserting user:', err);
-          req.flash('error', 'Error registering user. Please try again.');
-        } else {
-          console.log('User registered successfully')
-        }
-      }
-    );
-    next()
 
-  }, passport.authenticate('local', { failureRedirect: '/f' }),
-    (req, res, next) => {
-      res.redirect('/profile');
-    });
-  app.route('/signin').post((req, res, next) => {
-
-
-    passport.authenticate('local', {
-      failureRedirect: '/signin',
-      failureFlash: true // Enable flash messages for authentication failures
-    })(req, res, next);
-  }, (req, res) => {
-    
-    // This is the success callback after successful authentication
-    req.flash('success', 'Successfully Signed in');
-    res.redirect('/profile');
-  });
 
   app.get('/auth/google',
     passport.authenticate('google', {
@@ -240,17 +154,7 @@ module.exports = function (app, userDB, DB, productDB
       failureRedirect: '/'
     }));
 
-  function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
 
-    else {
-      // User is not authenticated, redirect to the login page or handle the error as required
-      req.flash('error', 'You need to log in to access this page.');
-      res.redirect('/');
-    }
-  };
 
   app.post('/deleteaccount', async (req, res) => {
     await userDB.deleteOne({ shortId: req.user.shortId }, (err) => {
@@ -386,7 +290,7 @@ module.exports = function (app, userDB, DB, productDB
     });
   }
 
-  app.post('/profileupdate', ensureAuthenticated, upload.single('picture'), async (req, res) => {
+  app.post('/profileupdate', upload.single('picture'), async (req, res) => {
     try {
       const { username } = req.user;
       const { file } = req;
@@ -434,7 +338,7 @@ module.exports = function (app, userDB, DB, productDB
   });
 
 
-  app.post('/passwordupdate', ensureAuthenticated, (req, res) => {
+  app.post('/passwordupdate', (req, res) => {
     const hash = bcrypt.hashSync(req.body.newpassword, 12);
 
     if (!bcrypt.compareSync(req.body.currentpassword, req.user.password)) {

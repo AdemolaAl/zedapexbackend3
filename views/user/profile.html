@@ -1,0 +1,81 @@
+<div id="profile1" >
+    <div class="cvr" style="border-top: unset; padding-top:30px">
+      <div class="first1">
+        <div class="header1">Personal Information</div>
+        <div class="text">Use a permanent address where you can receive mail.</div>
+      </div>
+      <div class="second2">
+        <form action="/profileupdate" method="post" enctype="multipart/form-data">
+          <!--
+            <div class="top-cvr" style="display: flex; align-items: center;">
+            <div class="top">
+              <% if (user.fileId) { %>
+                <div style="background: url('/images/<%= user.shortId %>'); background-position: center; background-size: cover;"></div>
+              <% } else { %>
+                <div class="top"></div>
+              <% } %>
+            </div>
+            <label class="file-label" for="file-input">Upload a Picture</label>
+            <input type="file" id="file-input" name="picture" onchange="displayFileName()">
+            <span id="file-name"></span>
+          </div>
+          -->
+          <div class="input-main">
+            <p>Email address</p>
+            <input type="text" name="email" value="<%= user.email %>">
+          </div>
+          <div class="input-main">
+            <p>Username</p>
+            <input type="text" name="username" value="<%= user.username %>">
+          </div>
+          <button type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="cvr">
+      <div class="first1">
+        <div class="header1">Change password</div>
+        <div class="text">Update your password associated with your account.</div>
+      </div>
+      <div class="second2">
+        <form action="/passwordupdate" method="post">
+          <div class="input-main">
+            <p>Current Password</p>
+            <input type="text" name="currentpassword">
+          </div>
+          <div class="input-main">
+            <p>New Password</p>
+            <input type="text" name="newpassword">
+          </div>
+          <div class="input-main">
+            <p>Confirm Password</p>
+            <input type="text" name="">
+          </div>
+          <button>Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="cvr" style="align-items: center;">
+      <div class="first1">
+        <div class="header1">Logout</div>
+        <div class="text">Logout from your current account</div>
+      </div>
+      <div class="second2">
+        <a href="/logout">
+          <button style="font-size: 18px;">Logout</button>
+        </a>
+      </div>
+    </div>
+    <div class="cvr">
+      <div class="first1">
+        <div class="header1">Delete account</div>
+        <div class="text">No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.</div>
+      </div>
+      <div class="second2">
+        <form action="/deleteaccount" method="post" style="margin: 0;padding: 0; background-color: unset;">
+          <button style="font-size: 18px; background-color: #EF4444; margin-top: 20px;">Yes, delete my account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

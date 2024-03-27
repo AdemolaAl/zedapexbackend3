@@ -43,6 +43,7 @@ div {
   outline: none;
   font-family: "poppins";
   background-color: #0F172A;
+  color: #64748B;
 }
 
 .input-main input:focus,

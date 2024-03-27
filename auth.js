@@ -19,7 +19,7 @@ module.exports = function(app, userDB) {
       done(null, doc);
     });
   });
-  passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+  passport.use('user',new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
     userDB.findOne({ $or: [{ email: email }, { username: email }] }, (err, user) => {
         console.log(`User ${email} attempted to log in.`);
         if (err) {
@@ -32,6 +32,21 @@ module.exports = function(app, userDB) {
             return done(null, false, { message: 'Login failed. Incorrect password.' });
         }
         return done(null, user);
+    });
+}));
+  passport.use('admin',new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+    userDB.findOne({ $or: [{ email: email , role:'admin' }, { username: email ,role:'admin'}] }, (err, admin) => {
+        console.log(`User ${email} attempted to log in.`);
+        if (err) {
+            return done(err);
+        }
+        if (!admin) {
+            return done(null, false, { message: 'Login failed. User not found.' });
+        }
+        if (!bcrypt.compareSync(password, admin.password)) {
+            return done(null, false, { message: 'Login failed. Incorrect password.' });
+        }
+        return done(null, admin);
     });
 }));
 

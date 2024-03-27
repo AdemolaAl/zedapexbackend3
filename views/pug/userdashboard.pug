@@ -4,7 +4,7 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
-        link(rel='stylesheet', href='/public/dashboard.css')
+        link(rel='stylesheet', href='/public/userdashh.css')
         script(src='https://kit.fontawesome.com/0b68ed503d.js', crossorigin='anonymous')
         link(rel='preconnect', href='https://fonts.googleapis.com')
         link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
@@ -15,30 +15,22 @@ html(lang="en")
         .left 
             .name ZedapexAcademy
             .divs
-                a(href="/dashboard/mydashboard") 
+                a(href="/userdashboard/mydashboard") 
                     .div#mydashboard(onclick='')
                         <i class="fa-regular fa-user"></i> 
                         p My Dashboard
-                a(href="/dashboard/courses") 
-                    .div#courses(onclick='handlecourses(this)')
+                a(href="/userdashboard/classes") 
+                    .div#classes(onclick='handlecourses(this)')
                         <i class="fa-regular fa-user"></i> 
-                        p Courses         
-                a(href="/dashboard/chat") 
-                    .div(onclick='handlecourses(this)')
+                        p Classes       
+                a(href="/userdashboard/prerecord") 
+                    .div#prerecord(onclick='handlecourses(this)')
                         <i class="fa-regular fa-user"></i> 
-                        p Chat 
-                a(href="/dashboard/profile") 
-                    .div(onclick='handleprofile(this)')
+                        p Prerecored Videos      
+                a(href="/userdashboard/profile") 
+                    .div#profile(onclick='handleprofile(this)')
                         <i class="fa-regular fa-user"></i> 
                         p Profile
-                a(href="/dashboard/billing") 
-                    .div(onclick='handlebilling(this)') 
-                        <i class="fa-solid fa-money-bill"></i>
-                        p Billing
-                a(href="/dashboard/order") 
-                    .div(onclick='handleorder(this)') 
-                        <i class="fa-solid fa-clock-rotate-left"></i>
-                        p Order History
             
         .right 
             .header3

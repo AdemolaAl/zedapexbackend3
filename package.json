@@ -36,6 +36,7 @@
     "passport.socketio": "~3.7.0",
     "path": "^0.12.7",
     "pug": "~3.0.0",
+    "pusher": "^5.2.0",
     "shortid": "^2.2.16",
     "socket.io": "^2.5.0"
   },
