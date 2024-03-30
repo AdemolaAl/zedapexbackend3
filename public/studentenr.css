@@ -118,4 +118,10 @@ footer .cvr {
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 820px) {
+  form {
+    width: 80%;
+  }
 }/*# sourceMappingURL=studentenr.css.map */

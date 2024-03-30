@@ -9,21 +9,27 @@ html(lang='en')
     link(rel='preconnect', href='https://fonts.googleapis.com')
     link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
     link(href='https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', rel='stylesheet')
-    script(src="service-worker.js")
+
 
   body
     header
       .cvr
         .name ZedapexAcademy
-        button
-          a(href='/enroll') Enroll
+        .btn-cvr 
+          button#dark(onclick='toggleColor()') 
+            <i class="fa-solid fa-moon"></i>
+          button
+            a(href='/enroll') Enroll
         .img
+        
     .home
       .cvr
         .texts
           .head Become a renowned trader with ZedapexAcademy
           .sc-text Join our live class to become that trader you have always inspire to become
           button Enroll
+        img(src="https://geeksui.codescandy.com/geeks/assets/images/hero/hero-img.png", alt="", srcset="")
+    
     .features
       .cvr
         .cvr2
@@ -49,7 +55,6 @@ html(lang='en')
       .t1 Live classes we offer
       .t2 We offer a series of classes you can choode from
       .crs-cvr
-
         .csr2 
           .top 
             .text 
@@ -160,6 +165,7 @@ html(lang='en')
     .pre-rec
       .text
         | Get access to Zedapex prerecorded video
+      .t2 If you're intrested in our pre-recorded videos, get acces to our pre-recorded videos below
       button Get Access
 
 
@@ -183,5 +189,8 @@ html(lang='en')
           span#copyright
             script.
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-          |  Geeks-UI, Inc. All Rights Reserved
+          |  Geeks-UI, Inc. All Rights Reserved 
+
+    script(src="public/handledark.js") 
+
 

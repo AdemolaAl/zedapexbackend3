@@ -138,3 +138,61 @@ footer{
         margin-bottom: 50px;
     } 
 }
+
+
+@media only screen and (max-width:820px) {
+    header{
+        .btn-cvr{
+            position: absolute;
+            right: 0;
+        }
+        .name{
+            font-size: 15px;
+        }
+        .img{
+            display: none;
+        }
+        button{
+            padding: 8px 15px;
+        }
+        //second color: #C6CDDC;
+    
+    }
+    .flex2{display: block;}
+    .comp{font-size: 28px; margin-top: 50px; margin-left: 20px;}
+
+    .main{
+
+        margin: 80px 20px;
+        .choose{font-size: 23px;margin-bottom: 30px;}
+
+        .cvr1{
+            width: unset;
+            font-size: 13px;
+        }
+        .div2{
+            margin-top: 30px;
+            padding: 15px;
+            width: unset;
+
+            .flex2{display: flex; justify-content: space-between;}
+        }
+    }
+
+    footer{
+        border-top: 0.5px solid var(--main-color);
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding-top: 50px;
+        margin: 50px 0 30px 0;
+        color: #64748B;
+        .cvr{
+            width: 300px;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        } 
+    }
+}

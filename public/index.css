@@ -3,8 +3,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "poppins";
-  color: white;
-  background-color: #0F172A;
+  color: var(--white);
+  background-color: var(--main-color2);
 }
 
 a {
@@ -46,20 +46,37 @@ div {
   justify-content: space-between;
 }
 
+:root {
+  --main-color: #1E293B;
+  --main-color2:#0F172A;
+  --main-color3:#0B1324;
+  --white: white;
+}
+
 header {
   padding: 10px;
-  background-color: #1E293B;
+  background-color: var(--main-color);
+  color: var(--white);
 }
 header .cvr {
   margin: 10px;
   display: flex;
-  color: white;
   align-items: center;
   position: relative;
 }
-header button {
+header .btn-cvr {
   position: absolute;
   right: 5%;
+}
+header #dark {
+  background-color: #0B1324;
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  padding: 0;
+  margin-right: 10px;
+}
+header button {
   padding: 8px 30px;
 }
 header .img {
@@ -95,6 +112,7 @@ header .name {
 .home .cvr .head {
   font-size: 36px;
   font-weight: bold;
+  color: white;
 }
 .home .cvr .sc-text {
   font-size: 20px;
@@ -102,20 +120,23 @@ header .name {
   margin: 10px 0 20px 0;
 }
 .home .cvr button {
-  color: #1E293B;
+  color: var(--main-color);
   padding: 5px 40px;
   font-size: 17px;
-  background-color: white;
+  background-color: var(--white);
+}
+.home .cvr img {
+  height: 100%;
 }
 
 .features {
-  background-color: #0B1324;
+  background-color: var(--main-color3);
 }
 .features .cvr {
   max-width: 1350px;
   margin: auto;
   padding: 20px 130px;
-  color: white;
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -164,7 +185,7 @@ header .name {
   display: none;
   border-radius: 10px;
   width: 210px;
-  background-color: #1E293B;
+  background-color: var(--main-color);
   padding: 30px 50px;
   height: 170px;
 }
@@ -196,7 +217,7 @@ header .name {
 .offer .crs-cvr .csr2 .bottom {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  background-color: #1E293B;
+  background-color: var(--main-color);
 }
 .offer .crs-cvr .csr2 .bottom .cvr {
   padding: 30px 20px;
@@ -228,18 +249,23 @@ header .name {
 
 .pre-rec {
   max-width: 1350px;
-  height: 100px;
   border-radius: 10px;
+  text-align: center;
   margin: auto;
-  background-color: white;
+  background-color: var(--white);
   margin: 30px 130px;
-  padding: 0 2%;
-  color: #0B1324;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 80px;
+  color: var(--main-color3);
+}
+.pre-rec .t2 {
   font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+.pre-rec .text {
+  font-size: 40px;
   font-weight: bold;
+  margin: 30px 0;
 }
 
 .cvr-ctr {
@@ -309,7 +335,7 @@ header .name {
 }
 
 footer {
-  border-top: 0.5px solid #1E293B;
+  border-top: 0.5px solid var(--main-color);
   display: flex;
   justify-content: center;
   text-align: center;
@@ -323,4 +349,194 @@ footer .cvr {
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 820px) {
+  button {
+    padding: 8px 20px;
+    font-size: 15px;
+    background-color: #6366f1;
+    border-radius: 5px;
+    font-family: "poppins";
+    border: none;
+    outline: none;
+    color: white;
+  }
+  header .btn-cvr {
+    position: absolute;
+    right: 0;
+  }
+  header .name {
+    font-size: 15px;
+  }
+  header .img {
+    display: none;
+  }
+  header button {
+    padding: 8px 15px;
+  }
+  .home {
+    background-color: #754FFE;
+    height: unset;
+  }
+  .home .cvr {
+    display: block;
+    height: unset;
+    padding: 30px 20px;
+    padding-bottom: 0;
+  }
+  .home .cvr .texts {
+    width: unset;
+  }
+  .home .cvr .head {
+    font-size: 25px;
+  }
+  .home .cvr .sc-text {
+    font-size: 15px;
+  }
+  .home .cvr button {
+    color: var(--main-color);
+    padding: 5px 40px;
+    font-size: 17px;
+    background-color: var(--white);
+  }
+  .home .cvr img {
+    width: 100%;
+    height: unset;
+    margin-top: 40px;
+  }
+  .features {
+    background-color: var(--main-color3);
+  }
+  .features .cvr {
+    padding: 10px 20px;
+    display: block;
+  }
+  .features .cvr .cvr2 {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+  }
+  .features .cvr .image {
+    height: 40px;
+    width: 40px;
+    font-size: 15px;
+  }
+  .features .cvr .first {
+    font-weight: bold;
+    font-size: 17px;
+  }
+  .features .cvr .second {
+    color: #C6CDDC;
+    font-size: 14px;
+  }
+  .offer {
+    padding: 70px 20px;
+  }
+  .offer .t1 {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .offer .t2 {
+    margin: 10px 0 50px 0;
+  }
+  .offer .crs-cvr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: scroll;
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 300px;
+  }
+  .offer .crs-cvr .csr2 {
+    height: 350px;
+    min-width: 340px;
+  }
+  .physical {
+    margin: 50px 20px;
+    display: block;
+  }
+  .physical .texts {
+    margin: 0px;
+  }
+  .physical .texts .p1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  .physical .texts .p2 {
+    font-size: 20px;
+  }
+  iframe {
+    max-width: 100%;
+    height: 225px;
+    border-radius: 7px;
+  }
+  .third1 {
+    margin: 130px 20px;
+  }
+  .third1 .p1 {
+    font-size: 30px;
+    width: unset;
+    font-weight: bold;
+  }
+  .third1 .p2 {
+    width: unset;
+    font-size: 17px;
+    color: #64748B;
+  }
+  .third1 .p3 {
+    font-size: 17px;
+    font-weight: bold;
+    color: orange;
+  }
+  .third1 .flex {
+    margin-top: 50px;
+    display: block;
+  }
+  .third1 .flex .cvr {
+    padding-left: 20px;
+    border-left: 1px solid #243252;
+    margin-top: 20px;
+  }
+  .pre-rec {
+    margin: 30px 20px;
+    padding: 20px;
+  }
+  .pre-rec .t2 {
+    font-size: 17px;
+  }
+  .pre-rec .text {
+    font-size: 30px;
+  }
+  .cvr-ctr {
+    width: 90%;
+  }
+  .cvr-ctr .p2 {
+    font-size: 30px;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  .cvr-ctr .p3 {
+    font-size: 17px;
+    margin-bottom: 20px;
+    color: #64748B;
+  }
+  footer {
+    border-top: 0.5px solid var(--main-color);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 50px;
+    margin: 50px 0 30px 0;
+    color: #64748B;
+  }
+  footer .cvr {
+    width: 300px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
 }/*# sourceMappingURL=index.css.map */
