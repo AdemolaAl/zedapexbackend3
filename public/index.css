@@ -268,6 +268,34 @@ header .name {
   margin: 30px 0;
 }
 
+.why {
+  margin: 130px 130px 0 130px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.why .p1 {
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.why .p2 {
+  font-size: 15px;
+}
+.why .sub2 {
+  display: flex;
+  align-items: center;
+}
+.why .sub2 i {
+  font-size: 20px;
+  color: #6366f1;
+  margin-right: 10px;
+}
+.why img {
+  height: 400px;
+  margin-left: 100px;
+}
+
 .cvr-ctr {
   text-align: center;
   width: 50%;
@@ -431,6 +459,7 @@ footer .cvr {
     font-size: 14px;
   }
   .offer {
+    display: none;
     padding: 70px 20px;
   }
   .offer .t1 {
@@ -459,14 +488,25 @@ footer .cvr {
   }
   .physical .texts {
     margin: 0px;
+    margin-top: -40px;
   }
   .physical .texts .p1 {
-    font-size: 30px;
-    margin-bottom: 20px;
+    font-size: 27px;
+    margin-bottom: 15px;
     font-weight: bold;
   }
   .physical .texts .p2 {
     font-size: 20px;
+  }
+  .why {
+    margin: 130px 20px 0 20px;
+  }
+  .why .right {
+    margin: auto;
+  }
+  .why img {
+    height: 200px;
+    margin-left: 0;
   }
   iframe {
     max-width: 100%;
