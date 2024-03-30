@@ -16,7 +16,8 @@ html(lang='en')
         .sign Signin
         .already
           | Don't have an account?
-          .signin  Sign up
+          .signin
+            a(href='/usersignup')  Sign up
 
         .input-main
           p Email
@@ -31,4 +32,4 @@ html(lang='en')
           input(type='checkbox', style='margin-right: 10px; background-color: #0F172A;')
           p(style='font-size: 15px;') I agree to the Terms of Service and Privacy Policy.
 
-        button(style='width: 100%;') Create Account
+        button(style='width: 100%;') Sign in
